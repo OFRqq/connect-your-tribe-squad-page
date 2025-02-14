@@ -68,6 +68,21 @@ app.get('/detail/:id', async function (request, response) {
   response.render('detail.liquid', {person: personDetailResponseJSON.data, squads: squadResponseJSON.data})
 })
 
+// Maak een GET route voor een sorteer pagina 
+
+// met een request parameter sort age
+app.get('/sort/age', async function (request, response) {
+  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
+  const personAgeResponse = await fetch('https://fdnd.directus.app/items/person/?sort=birthdate&fields=*,squads.squad_id.name,squads.squad_id.cohort&filter={"_and":[{"squads":{"squad_id":{"tribe":{"name":"FDND Jaar 1"}}}},{"squads":{"squad_id":{"cohort":"2425"}}}]}')
+  // En haal daarvan de JSON op
+  const personAgeResponseJSON = await personAgeResponse.json()
+  
+  // Render detail.liquid uit de views map en geef de opgehaalde data mee als variable, genaamd person
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('sortage.liquid', {person: personDetailResponseJSON.data, squads: squadResponseJSON.data})
+})
+
+// ---- ---- ---- ----
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 

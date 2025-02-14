@@ -1,10 +1,24 @@
 {% render 'partials/head.liquid' %}
 
+<h1>Squad 1G</h1>
+
 <h2>Students</h2>
-<ul>
-  {% for person in persons %}
-    <li><a href="/detail/{{ person.id }}">{{ person.name }}</a></li>
-  {% endfor %}
-</ul>
+
+<form for="sorting">Sort by</label>
+<select onchange="location = this.value;">
+    <option value="#">select</option>
+    <option value="sort/age">age</option>
+    <option value="">...</option>
+    <option value="">...</option>
+    <option value="">...</option>
+</select>
+
+<section class="container">
+  <ul>
+    {% for person in persons %}
+    <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a></li>
+    {% endfor %}
+  </ul>
+</section>
 
 {% render 'partials/foot.liquid', squads: squads %}
