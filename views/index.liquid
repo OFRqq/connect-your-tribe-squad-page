@@ -17,7 +17,10 @@
   <ul>
     {% for person in persons %}
     <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a>
+    {% if person.bio %}
     <p>{{person.bio}}</p>
+    {% else %}
+    <p>N/A</p>
     </li>
     {% endfor %}
   </ul>
