@@ -4,8 +4,13 @@
 
 <section class="container">
   <ul>
-    {% for person in persons %}
-    <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a></li>
+    {% for person in persons %}  
+    <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a>
+    {% if person.birthdate %}
+      <p>is geboren op {{ person.birthdate }}</p>
+    {% else %}
+      <p>Geboortedatum onbekend</p>
+    {% endif %}
     {% endfor %}
   </ul>
 </section>

@@ -16,7 +16,9 @@
 <section class="container">
   <ul>
     {% for person in persons %}
-    <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a></li>
+    <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a>
+    <p>{{person.bio}}</p>
+    </li>
     {% endfor %}
   </ul>
 </section>
