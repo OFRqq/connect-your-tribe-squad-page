@@ -36,8 +36,8 @@ app.use(express.urlencoded({extended: true}))
 // Om Views weer te geven, heb je Routes nodig
 // Maak een GET route voor de index
 app.get('/', async function (request, response) {
-  // Haal alle personen uit de WHOIS API op, van dit jaar
-  const personResponse = await fetch('https://fdnd.directus.app/items/person/?fields=*,squads.squad_id.name,squads.squad_id.cohort&filter={"_and":[{"squads":{"squad_id":{"tribe":{"name":"FDND Jaar 1"}}}},{"squads":{"squad_id":{"cohort":"2425"}}}]}')
+  // Haal alle personen uit de WHOIS API op, van dit jaar, DEZE SQUAD (aangepast)
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?fields=*,squads.squad_id.name,squads.squad_id.cohort&filter={%22_and%22:[{%22squads%22:{%22squad_id%22:{%22name%22:%221G%22}}},{%22squads%22:{%22squad_id%22:{%22tribe%22:{%22name%22:%22FDND%20Jaar%201%22}}}},{%22squads%22:{%22squad_id%22:{%22cohort%22:%222425%22}}}]}')
   // En haal daarvan de JSON op
   const personResponseJSON = await personResponse.json()
   

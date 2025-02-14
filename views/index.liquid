@@ -1,19 +1,26 @@
 {% render 'partials/head.liquid' %}
 
 
-<form for="sorting">Sort by</label>
+
+<details>
+  <summary>Sort</summary>
+  <a href="/sort/age">age</a>
+</details>
+
+<form for="Filtering">Filter</form>
 <select onchange="location = this.value;">
   <option value="#">select</option>
-  <option value="sort/age">age</option>
-  <option value="">...</option>
-  <option value="">...</option>
-  <option value="">...</option>
+  <option value="#">age</option>
+  <option value="#">food</option>
+  <option value="#">...</option>
+  <option value="#">...</option>
 </select>
+
 
 <section class="container">
   <ul>
     {% for person in persons %}
-    <li><a href="/detail/{{ person.id }}">"{{ person.name }}"</a>
+    <li style="--begin-op:{{ "person.id" | slice: 3 }}"><a href="/detail/{{ person.id }}">"{{ person.name }}"</a>
     {% if person.bio %}
     <p>{{person.bio}}</p>
     {% else %}

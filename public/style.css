@@ -5,3 +5,7 @@
 body {
     background-color: #E4BB16;
 }
+
+li {
+    margin-left: calc(var(--begin-op) * 15px - 100vw);
+}
